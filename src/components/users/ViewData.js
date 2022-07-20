@@ -5,14 +5,14 @@ import Modal from "react-bootstrap/Modal";
 function ViewData(props) {
    return (
       <Modal show={props.show} onHide={props.onHide}>
-         <Modal.Header>
+         <Modal.Header className="alert alert-info">
             <Modal.Title>Users Details</Modal.Title>
          </Modal.Header>
          <Modal.Body>
             <Form>
                <Form.Group className="mb-3">
                   <Form.Label>Name</Form.Label>
-                  <Form.Control value={props.data.name} readOnly></Form.Control>
+                  <Form.Control  value={props.data.name} readOnly></Form.Control>
                </Form.Group>
                
                <Form.Group className="mb-3">

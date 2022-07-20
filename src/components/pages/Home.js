@@ -70,7 +70,7 @@ const Home = () => {
   //-------------------------------------------------------------
   useEffect(() => {
     loadUsers();
-  }, []);
+  }, []);   
 
   const loadUsers = async (id) => {
     const result = await axios.get(
@@ -85,11 +85,11 @@ const Home = () => {
     );
     loadUsers();
 
-    if (deleteUser(id)) {
-      alert(`id : ${id} data is deleted !!`);
-    }
+    
 
-    // if (deleteUser(id)) {
+    
+
+        // if (deleteUser(id)) {
     //   toast.error(` id : ${id} data is deleted !!!`, {
     //     position: toast.POSITION.TOP_CENTER,
     //   });

@@ -92,7 +92,7 @@ const AddUser11 = (props) => {
         }}
       >
         <div className="update">
-          <Modal.Header>
+          <Modal.Header className="alert alert-info">
             <Modal.Title>Add User</Modal.Title>
           </Modal.Header>
 
@@ -101,6 +101,7 @@ const AddUser11 = (props) => {
               <Form.Group className="mb-3">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
+                  className="alert alert-success"
                   type="text"
                   name="name"
                   placeholder="Enter your name"
@@ -116,6 +117,7 @@ const AddUser11 = (props) => {
               <Form.Group className="mb-3">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
+                 className="alert alert-success"
                   type="email"
                   name="email"
                   placeholder="Enter your email"
@@ -131,6 +133,7 @@ const AddUser11 = (props) => {
               <Form.Group className="mb-3">
                 <Form.Label>Phone </Form.Label>
                 <Form.Control
+                 className="alert alert-success"
                   type="phone"
                   name="phone"
                   placeholder="Enter your phone"
@@ -146,6 +149,7 @@ const AddUser11 = (props) => {
               <Form.Group className="mb-3">
                 <Form.Label>Address</Form.Label>
                 <Form.Control
+                 className="alert alert-success"
                   type="address"
                   name="address"
                   placeholder="Enter your address"
@@ -161,6 +165,7 @@ const AddUser11 = (props) => {
               <Form.Group className="mb-3">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
+                 className="alert alert-success"
                   type="password"
                   name="password"
                   placeholder="Enter your password"

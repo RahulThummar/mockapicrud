@@ -9681,11 +9681,6 @@
   optionalDependencies:
     "fsevents" "2.1.2"
 
-"react-toast@^1.0.3":
-  "integrity" "sha512-gL3+O5hlLaoBmd36oXWKrjFeUyLCMQ04AIh48LrnUvdeg2vhJQ0E803TgVemgJvYUXKlutMVn9+/QS2DDnk26Q=="
-  "resolved" "https://registry.npmjs.org/react-toast/-/react-toast-1.0.3.tgz"
-  "version" "1.0.3"
-
 "react-toastify@^9.0.5":
   "integrity" "sha512-dszPCeQINY+Nm6HmsiAXT/7wsazPqv0S/RuhIYLAW+fTKcd3T1iRjZG0XqrN9nvAzqaE5J6uxMaiBrOevxjY8g=="
   "resolved" "https://registry.npmjs.org/react-toastify/-/react-toastify-9.0.5.tgz"

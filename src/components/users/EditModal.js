@@ -95,15 +95,16 @@ const EditModal = (props) => {
       }}
     >
       <div className="update">
-        <Modal.Header>
+        <Modal.Header className="alert alert-info">
           <Modal.Title>Update</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>
+        <Modal.Body> 
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
               <Form.Control
+               className="alert alert-success"
                 type="text"
                 name="name"
                 placeholder={props.data.name}
@@ -119,6 +120,7 @@ const EditModal = (props) => {
             <Form.Group className="mb-3">
               <Form.Label>Email</Form.Label>
               <Form.Control
+               className="alert alert-success"
                 type="email"
                 name="email"
                 placeholder={props.data.email}
@@ -134,6 +136,7 @@ const EditModal = (props) => {
             <Form.Group className="mb-3">
               <Form.Label>Phone </Form.Label>
               <Form.Control
+               className="alert alert-success"
                 type="phone"
                 name="phone"
                 placeholder={props.data.phone}
@@ -149,6 +152,7 @@ const EditModal = (props) => {
             <Form.Group className="mb-3">
               <Form.Label>Address</Form.Label>
               <Form.Control
+               className="alert alert-success"
                 type="address"
                 name="address"
                 placeholder={props.data.address}
