@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, CSSProperties } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
 import ViewData from "../users/ViewData";
 import EditModal from "../users/EditModal";
 import { useParams } from "react-router-dom";
 import AddUser11 from "../users/AddUser11";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
+import Skeleton , { SkeletonTheme }  from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
+
+import HashLoader from "react-spinners/HashLoader";
 
 const Home = () => {
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const [users, setUser] = useState([]);
   const [show, setShow] = useState(false);
@@ -17,6 +22,12 @@ const Home = () => {
   const [dataForModel, setDataForModel] = useState({});
   const [viewdata, setViewData] = useState(false);
   const [addData, setAddData] = useState(false);
+
+  const override: CSSProperties = {
+    display: "block",
+    margin: "150px",
+    marginLeft: "700px",
+  };
 
   //----handleview
 
@@ -38,6 +49,7 @@ const Home = () => {
 
   const handleCloseAdd = () => {
     setAdd(false);
+
     axios
       .get(`https://62affa883bbf46a3522964c7.mockapi.io/crudDemo`)
       .then((respone) => {
@@ -61,7 +73,7 @@ const Home = () => {
   const handleClose = () => {
     setShow(false);
     axios
-      .get(`https://62affa883bbf46a3522964c7.mockapi.io/crudDemo/`)
+      .get(`https://62affa883bbf46a3522964c7.mockapi.io/crudDemo/`) 
       .then((respone) => {
         setUser(respone.data);
       });
@@ -70,12 +82,17 @@ const Home = () => {
   //-------------------------------------------------------------
   useEffect(() => {
     loadUsers();
-  }, []);   
+  }, []);
 
   const loadUsers = async (id) => {
+    setLoading(true);
     const result = await axios.get(
       "https://62affa883bbf46a3522964c7.mockapi.io/crudDemo/"
     );
+    setTimeout(() => {
+      setLoading(false);
+    }, [400]);
+
     setUser(result.data);
   };
 
@@ -85,16 +102,11 @@ const Home = () => {
     );
     loadUsers();
 
-    
-
-    
-
-        // if (deleteUser(id)) {
+    // if (deleteUser(id)) {
     //   toast.error(` id : ${id} data is deleted !!!`, {
     //     position: toast.POSITION.TOP_CENTER,
     //   });
     // }
-
   };
 
   return (
@@ -128,40 +140,50 @@ const Home = () => {
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr>
-                  <th scope="row">{user.id}</th>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone}</td>
-                  <td>{user.address}</td>
-                   <td>
-                    <Link
-                      className=" fa fa-eye  btn btn-outline-success mr-2"
-                      onClick={() => handleView(user)}
-                      // to={`/users/${user.id}`}
-                    />
-                  </td>
+            {loading ? (
+              /* <Skeleton variant="rectangular" width={210} height={118} /> */
+               <HashLoader
+                color={"782C97"}
+                loading={loading}
+                cssOverride={override}
+                size={80}
+              /> 
+            ) : (
+              <tbody>
+                {users.map((user) => (
+                  <tr>
+                    <th scope="row">{user.id }</th>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.phone}</td>
+                    <td>{user.address}</td>
+                    <td>
+                      <Link
+                        className=" fa fa-eye  btn btn-outline-success mr-2"
+                        onClick={() => handleView(user)}
+                        // to={`/users/${user.id}`}
+                      />
+                    </td>
 
-                  <td>
-                    <Link
-                      className="fa fa-edit  btn btn-outline-primary mr-2"
-                      onClick={() => handleShow(user)}
-                      // to={`/users/edit/${user.id}`}
-                    />
-                  </td>
-                  {console.log(user.id, "hihijojop-=-=-=-=-=-")}
+                    <td>
+                      <Link
+                        className="fa fa-edit  btn btn-outline-primary mr-2"
+                        onClick={() => handleShow(user)}
+                        // to={`/users/edit/${user.id}`}
+                      />
+                    </td>
+                    {console.log(user.id, "hihijojop-=-=-=-=-=-")}
 
-                  <td>
-                    <Link
-                      className=" fa fa-trash btn btn-outline-danger "
-                      onClick={() => deleteUser(user.id)}
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+                    <td>
+                      <Link
+                        className=" fa fa-trash btn btn-outline-danger "
+                        onClick={() => deleteUser(user.id)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
           </table>
         </div>
       </div>
